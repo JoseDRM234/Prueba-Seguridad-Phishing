@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instagram</title>
+
+  <!-- Google Font: Lobster para el logo -->
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #000;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      padding: 40px 20px;
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visual-showcase {
+        flex: 1;
+        min-height: 520px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .visual-showcase img {
+        max-width: 75%;
+        height: auto;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+
+    /* Login form */
+    .login-container {
+      width: 360px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .instagram-card {
+      width: 100%;
+      background: #000;
+      padding: 32px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .instagram-logo {
+      font-family: 'Lobster', cursive;
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 24px;
+      font-weight: normal;
+      letter-spacing: -2px;
+      color: white;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .form-input {
+      background: #262626;
+      border: 1px solid #363636;
+      border-radius: 1px;
+      padding: 10px 14px;
+      font-size: 14px;
+      color: white;
+      outline: none;
+    }
+
+    .form-input::placeholder {
+      color: #8e8e8e;
+    }
+
+    .login-button {
+      background: #0095f6;
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 16px 0;
+      color: #8e8e8e;
+      font-size: 13px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #363636;
+    }
+
+    .divider span {
+      padding: 0 12px;
+    }
+
+    .facebook-login {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #0095f6;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px;
+    }
+
+    .forgot-password {
+      text-align: center;
+      color: #ffffff;
+      font-size: 15px;
+      text-decoration: none;
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    .signup-link {
+      text-align: center;
+      font-size: 14px;
+      color: #ffffff;
+      margin-top: 50px;
+    }
+
+    .signup-link a {
+      color: #1a6190;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #8e8e8e;
+      background-color: #000;
+    }
+
+    .footer-links {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      margin: 0 8px;
+      color: #8e8e8e;
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      margin-top: 5px;
+      font-size: 12px;
+      color: #8e8e8e;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .container {
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .visual-showcase {
+        min-height: 360px;
+      }
+
+      .login-container {
+        width: 100%;
+        max-width: 420px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .visual-showcase {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" role="main">
+    <!-- Imagen en vez del showcase -->
+    <div class="visual-showcase" aria-hidden="true">
+      <img src="HISTORY.png" alt="Vista previa de Instagram">
+    </div>
+
+    <!-- Login -->
+    <div class="login-container" aria-label="Formulario de inicio de sesión">
+      <div class="instagram-card">
+        <h1 class="instagram-logo">
+          <img src="INSTAGRAM LOGO.png" alt="Instagram" width="250">
+        </h1>
+
+        <form class="login-form" id="loginForm" action="#" method="post" novalidate>
+          <input type="text" class="form-input" placeholder="Teléfono, usuario o correo electrónico" required>
+          <input type="password" class="form-input" placeholder="Contraseña" required>
+          <button type="submit" class="login-button" id="loginButton">Iniciar sesión</button>
+        </form>
+
+        <div class="divider"><span>O</span></div>
+
+        <a href="#" class="facebook-login" id="facebookLogin">Iniciar sesión con Facebook</a>
+
+        <a href="#" class="forgot-password" id="forgotPassword">¿Olvidaste tu contraseña?</a>
+
+        <div class="signup-link">
+          ¿No tienes una cuenta? <a href="#" id="registerLink">Regístrate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#">Meta</a>
+      <a href="#">Información</a>
+      <a href="#">Blog</a>
+      <a href="#">Empleo</a>
+      <a href="#">Ayuda</a>
+      <a href="#">API</a>
+      <a href="#">Privacidad</a>
+      <a href="#">Condiciones</a>
+      <a href="#">Ubicaciones</a>
+      <a href="#">Instagram Lite</a>
+      <a href="#">Meta AI</a>
+      <a href="#">Artículos de Meta AI</a>
+      <a href="#">Threads</a>
+      <a href="#">Importación de contactos y no usuarios</a>
+      <a href="#">Meta Verified</a>
+    </div>
+    <div class="footer-bottom">
+      <span>Español ▼</span>
+      <span>© 2025 Instagram from Meta</span>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginForm = document.getElementById('loginForm');
+      const facebookLogin = document.getElementById('facebookLogin');
+      const registerLink = document.getElementById('registerLink');
+      const forgotPassword = document.getElementById('forgotPassword');
+
+      function redirectToAlert() {
+        window.location.href = 'alert.html';
+      }
+
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        redirectToAlert();
+      });
+
+      facebookLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        redirectToAlert();
+      });
+
+      registerLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        redirectToAlert();
+      });
+
+      forgotPassword.addEventListener('click', (e) => {
+        e.preventDefault();
+        redirectToAlert();
+      });
+    });
+  </script>
+</body>
+</html>

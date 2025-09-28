@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>¡Alerta de Seguridad!</title>
+
+    <!-- Fuente para el encabezado (opcional) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <style>
+        * { box-sizing: border-box; margin:0; padding:0; }
+        html, body { height:100%; }
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg,#0f1724 0%, #0b1220 40%, #0b0b0b 100%);
+            color: #eef2f7;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:24px;
+        }
+
+        .alert-card {
+            width:100%;
+            max-width:900px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 28px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            display:grid;
+            grid-template-columns: 1fr 360px;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .alert-left {
+            padding: 8px 12px;
+        }
+
+        .logo-small {
+            font-family: 'Lobster', cursive;
+            font-size: 34px;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .alert-title {
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: #ffdd57;
+        }
+
+        .alert-message {
+            font-size: 18px;
+            line-height: 1.4;
+            color: #f6f7f9;
+            margin-bottom: 16px;
+        }
+
+        .alert-note {
+            color: #cbd5e1;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .actions {
+            display:flex;
+            gap:12px;
+            flex-wrap:wrap;
+        }
+
+        .btn {
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: none;
+            cursor:pointer;
+            font-weight:600;
+            font-size:14px;
+        }
+
+        .btn-primary {
+            background: #ff5252;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #cbd5e1;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .alert-right {
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            gap:14px;
+            padding: 8px 12px;
+        }
+
+        .icon-circle {
+            width:120px;
+            height:120px;
+            border-radius: 50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background: radial-gradient(circle at top left, #ff6b6b, #ff3b3b);
+            box-shadow: 0 8px 30px rgba(255, 59, 59, 0.18);
+            font-size:48px;
+        }
+
+        .small-info {
+            font-size:13px;
+            color:#cbd5e1;
+            text-align:center;
+            max-width:260px;
+        }
+
+        .footer-note {
+            margin-top:18px;
+            color:#94a3b8;
+            font-size:13px;
+        }
+
+        @media (max-width: 880px) {
+            .alert-card { grid-template-columns: 1fr; padding:20px; }
+            .alert-right { order:-1; }
+        }
+    </style>
+</head>
+<body>
+    <main class="alert-card" role="alert">
+        <section class="alert-left" aria-labelledby="alert-title">
+            <div class="logo-small">Instagram</div>
+            <h2 id="alert-title" class="alert-title">¡HEY, TEN CUIDADO!</h2>
+
+            <p class="alert-message">
+                Siempre verifica los correos electrónicos antes de hacer clic. <strong>Puedes ser víctima de phishing.</strong>
+            </p>
+
+            <p class="alert-note">
+                Si introdujiste alguna credencial en la página anterior, considera cambiar tu contraseña y revisar la seguridad de tu cuenta.
+            </p>
+
+            <div class="actions">
+                <button class="btn btn-primary" id="learnMore">¿Qué hacer ahora?</button>
+                <button class="btn btn-secondary" id="goBack">Volver a la pagina principal</button>
+            </div>
+
+            <div class="footer-note" id="extraInfo" hidden>
+                Consejos rápidos: verifica el remitente del correo, revisa URLs (pasando el cursor), activa la verificación en dos pasos y nunca compartas tu contraseña.
+            </div>
+        </section>
+
+        <aside class="alert-right" aria-hidden="false">
+            <div class="icon-circle" aria-hidden="true">⚠️</div>
+            <div class="small-info">Protege tu cuenta: mantén la atención ante enlaces sospechosos y solicitudes de datos.</div>
+        </aside>
+    </main>
+
+    <script>
+        document.getElementById('learnMore').addEventListener('click', () => {
+            const info = document.getElementById('extraInfo');
+            info.hidden = !info.hidden;
+            if (!info.hidden) {
+                // deslizar hasta la nota (mejor experiencia)
+                info.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+
+        document.getElementById('goBack').addEventListener('click', () => {
+            // Volver a la landing (index.html)
+            window.location.href = 'index.html';
+        });
+
+        // Opcional: si quieres que esta página sea final (no volver al historial),
+        // podrías usar history.replaceState al redirigir desde landing.
+    </script>
+</body>
+</html>
